@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\Plugin;
+namespace SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\Communication\Plugin\PickingList;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\PickingListOrderItemGroupTransfer;
 use Generated\Shared\Transfer\StockTransfer;
-use SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMultiShipmentPickingStrategyExampleBusinessTester;
+use SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMultiShipmentPickingStrategyExampleCommunicationTester;
 
 /**
  * Auto-generated group annotations
@@ -18,16 +18,18 @@ use SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMu
  * @group SprykerTest
  * @group Zed
  * @group PickingListMultiShipmentPickingStrategyExample
+ * @group Communication
  * @group Plugin
+ * @group PickingList
  * @group MultiShipmentPickingListGeneratorStrategyPluginTest
  * Add your own group annotations below this line
  */
 class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
 {
     /**
-     * @var \SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMultiShipmentPickingStrategyExampleBusinessTester
+     * @var \SprykerTest\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMultiShipmentPickingStrategyExampleCommunicationTester
      */
-    protected PickingListMultiShipmentPickingStrategyExampleBusinessTester $tester;
+    protected PickingListMultiShipmentPickingStrategyExampleCommunicationTester $tester;
 
     /**
      * @return void
@@ -35,15 +37,13 @@ class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
     public function testIsApplicableShouldReturnTrueWhenPickingListStrategyIsCorrect(): void
     {
         // Arrange
-        $pickingListStrategy = $this->tester->getModuleConfig()
-            ->getPickingListStrategy();
+        $pickingListStrategy = $this->tester->getModuleConfig()->getPickingListStrategy();
 
         $stockTransfer = $this->tester->createStockTransfer([
             StockTransfer::PICKING_LIST_STRATEGY => $pickingListStrategy,
         ]);
 
-        $pickingListOrderItemGroupTransfer = (new PickingListOrderItemGroupTransfer())
-            ->setWarehouse($stockTransfer);
+        $pickingListOrderItemGroupTransfer = (new PickingListOrderItemGroupTransfer())->setWarehouse($stockTransfer);
 
         //Act
         $isApplicable = $this->tester
