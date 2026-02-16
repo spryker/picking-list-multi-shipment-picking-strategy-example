@@ -10,9 +10,9 @@ namespace Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Dependency\
 interface PickingListMultiShipmentPickingStrategyExampleToShipmentFacadeInterface
 {
     /**
-     * @param list<\Generated\Shared\Transfer\ItemTransfer> $itemTransfers
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $itemTransfers
      *
-     * @return list<\Generated\Shared\Transfer\ItemTransfer>
+     * @return array<\Generated\Shared\Transfer\ItemTransfer>
      */
     public function expandOrderItemsWithShipment(array $itemTransfers): array;
 }
