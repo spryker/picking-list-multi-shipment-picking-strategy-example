@@ -33,9 +33,6 @@ class PickingListMultiShipmentPickingStrategyExampleCommunicationTester extends 
 {
     use _generated\PickingListMultiShipmentPickingStrategyExampleCommunicationTesterActions;
 
-    /**
-     * @return \Spryker\Zed\PickingListExtension\Dependency\Plugin\PickingListGeneratorStrategyPluginInterface
-     */
     public function createMultiShipmentPickingListGeneratorStrategyPlugin(): PickingListGeneratorStrategyPluginInterface
     {
         return new MultiShipmentPickingListGeneratorStrategyPlugin();

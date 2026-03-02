@@ -19,9 +19,6 @@ use Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\PickingListMultiS
  */
 class PickingListMultiShipmentPickingStrategyExampleBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Business\Generator\MultiShipmentPickingListGeneratorInterface
-     */
     public function createMultiShipmentPickingListGenerator(): MultiShipmentPickingListGeneratorInterface
     {
         return new MultiShipmentPickingListGenerator(
@@ -30,17 +27,11 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessFactory extends Abst
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Dependency\Facade\PickingListMultiShipmentPickingStrategyExampleToShipmentFacadeInterface
-     */
     public function getShipmentFacade(): PickingListMultiShipmentPickingStrategyExampleToShipmentFacadeInterface
     {
         return $this->getProvidedDependency(PickingListMultiShipmentPickingStrategyExampleDependencyProvider::FACADE_SHIPMENT);
     }
 
-    /**
-     * @return \Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Dependency\Service\PickingListMultiShipmentPickingStrategyExampleToShipmentServiceInterface
-     */
     public function getShipmentService(): PickingListMultiShipmentPickingStrategyExampleToShipmentServiceInterface
     {
         return $this->getProvidedDependency(PickingListMultiShipmentPickingStrategyExampleDependencyProvider::SERVICE_SHIPMENT);

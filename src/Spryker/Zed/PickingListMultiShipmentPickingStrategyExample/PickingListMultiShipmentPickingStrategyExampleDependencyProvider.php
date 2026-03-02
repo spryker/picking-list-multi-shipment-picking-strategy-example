@@ -27,11 +27,6 @@ class PickingListMultiShipmentPickingStrategyExampleDependencyProvider extends A
      */
     public const SERVICE_SHIPMENT = 'SERVICE_SHIPMENT';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -42,11 +37,6 @@ class PickingListMultiShipmentPickingStrategyExampleDependencyProvider extends A
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addShipmentFacade(Container $container): Container
     {
         $container->set(static::FACADE_SHIPMENT, function (Container $container) {
@@ -58,11 +48,6 @@ class PickingListMultiShipmentPickingStrategyExampleDependencyProvider extends A
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addShipmentService(Container $container): Container
     {
         $container->set(static::SERVICE_SHIPMENT, function (Container $container) {

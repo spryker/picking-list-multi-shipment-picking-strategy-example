@@ -31,9 +31,6 @@ class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
      */
     protected PickingListMultiShipmentPickingStrategyExampleCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     public function testIsApplicableShouldReturnTrueWhenPickingListStrategyIsCorrect(): void
     {
         // Arrange
@@ -54,9 +51,6 @@ class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
         $this->assertTrue($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsApplicableShouldReturnFalseWhenPickingListStrategyIsNotCorrect(): void
     {
         // Arrange
@@ -73,9 +67,6 @@ class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsApplicableShouldReturnFalseWhenPickingListStrategyNotSet(): void
     {
         // Arrange
@@ -95,9 +86,6 @@ class MultiShipmentPickingListGeneratorStrategyPluginTest extends Unit
         $this->assertFalse($isApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testIsApplicableShouldReturnFalseWhenWarehouseNotSet(): void
     {
         // Arrange

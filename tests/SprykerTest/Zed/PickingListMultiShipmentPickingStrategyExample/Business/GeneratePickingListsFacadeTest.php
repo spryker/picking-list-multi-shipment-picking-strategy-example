@@ -32,9 +32,6 @@ class GeneratePickingListsFacadeTest extends Unit
      */
     protected PickingListMultiShipmentPickingStrategyExampleBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -42,9 +39,6 @@ class GeneratePickingListsFacadeTest extends Unit
         $this->tester->configureTestStateMachine([PickingListMultiShipmentPickingStrategyExampleBusinessTester::DEFAULT_OMS_PROCESS_NAME]);
     }
 
-    /**
-     * @return void
-     */
     public function testGeneratePickingListsShouldReturnCollectionWithOnePickingListEntity(): void
     {
         // Arrange
@@ -78,9 +72,6 @@ class GeneratePickingListsFacadeTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testGeneratePickingListsShouldReturnCollectionWithTwoPickingListEntitiesWhenTwoShipmentsSet(): void
     {
         // Arrange
@@ -105,9 +96,6 @@ class GeneratePickingListsFacadeTest extends Unit
         $this->assertCount(2, $pickingListTransferCollection);
     }
 
-    /**
-     * @return void
-     */
     public function testGeneratePickingListsShouldReturnEmptyCollectionWhenOrderItemsNotSet(): void
     {
         // Arrange
@@ -123,9 +111,6 @@ class GeneratePickingListsFacadeTest extends Unit
         $this->assertCount(0, $pickingListCollectionTransfer->getPickingLists());
     }
 
-    /**
-     * @return void
-     */
     public function testGeneratePickingListsShouldThrowExceptionWhenShipmentNotSet(): void
     {
         // Arrange
@@ -145,9 +130,6 @@ class GeneratePickingListsFacadeTest extends Unit
         $this->tester->getFacade()->generatePickingLists($pickingListOrderItemGroupTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGeneratePickingListsShouldThrowExceptionWhenWarehouseNotSet(): void
     {
         // Arrange

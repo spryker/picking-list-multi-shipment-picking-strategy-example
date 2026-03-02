@@ -29,10 +29,6 @@ class MultiShipmentPickingListGenerator implements MultiShipmentPickingListGener
      */
     protected PickingListMultiShipmentPickingStrategyExampleToShipmentServiceInterface $shipmentService;
 
-    /**
-     * @param \Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Dependency\Facade\PickingListMultiShipmentPickingStrategyExampleToShipmentFacadeInterface $shipmentFacade
-     * @param \Spryker\Zed\PickingListMultiShipmentPickingStrategyExample\Dependency\Service\PickingListMultiShipmentPickingStrategyExampleToShipmentServiceInterface $shipmentService
-     */
     public function __construct(
         PickingListMultiShipmentPickingStrategyExampleToShipmentFacadeInterface $shipmentFacade,
         PickingListMultiShipmentPickingStrategyExampleToShipmentServiceInterface $shipmentService
@@ -41,11 +37,6 @@ class MultiShipmentPickingListGenerator implements MultiShipmentPickingListGener
         $this->shipmentService = $shipmentService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PickingListOrderItemGroupTransfer $pickingListOrderItemGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\PickingListCollectionTransfer
-     */
     public function generatePickingLists(PickingListOrderItemGroupTransfer $pickingListOrderItemGroupTransfer): PickingListCollectionTransfer
     {
         $itemTransfers = $this->shipmentFacade->expandOrderItemsWithShipment(
@@ -67,12 +58,6 @@ class MultiShipmentPickingListGenerator implements MultiShipmentPickingListGener
         return $pickingListCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\PickingListTransfer
-     */
     protected function generatePickingListForShipmentGroup(
         ShipmentGroupTransfer $shipmentGroupTransfer,
         StockTransfer $stockTransfer

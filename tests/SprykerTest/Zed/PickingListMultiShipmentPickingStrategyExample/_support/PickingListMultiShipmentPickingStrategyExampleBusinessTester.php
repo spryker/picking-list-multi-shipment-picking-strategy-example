@@ -44,12 +44,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
      */
     public const DEFAULT_OMS_PROCESS_NAME = 'Test01';
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\ShipmentTransfer|null $shipmentTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function expandOrderItemsWithShipment(
         OrderTransfer $orderTransfer,
         ?ShipmentTransfer $shipmentTransfer = null
@@ -62,9 +56,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         return $orderTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function createPersistedOrderTransfer(): OrderTransfer
     {
         $saveOrderTransfer = $this->haveOrder(
@@ -75,11 +66,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         return $this->getOrderTransfer($saveOrderTransfer->getIdSalesOrder());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function createPersistedOrderTransferFromQuote(QuoteTransfer $quoteTransfer): OrderTransfer
     {
         $saveOrderTransfer = $this->haveOrderFromQuote(
@@ -92,9 +78,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function createQuoteTransferWithThreeItems(): QuoteTransfer
     {
         return (new QuoteBuilder())
@@ -120,9 +103,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         return (new StockBuilder($seedData))->build();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShipmentTransfer
-     */
     public function createShipmentTransfer(): ShipmentTransfer
     {
         return (new ShipmentTransfer())
@@ -131,12 +111,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
             );
     }
 
-    /**
-     * @param int $idSalesOrderItem
-     * @param int $idSalesShipment
-     *
-     * @return void
-     */
     public function updateSalesOrderItemWithIdSalesShipment(int $idSalesOrderItem, int $idSalesShipment): void
     {
         $salesOrderItemEntity = $this->getSalesOrderItemQuery()
@@ -147,9 +121,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         $salesOrderItemEntity->save();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShipmentTransfer
-     */
     public function getShipmentTransfer(): ShipmentTransfer
     {
         $shipmentTransfer = (new ShipmentBuilder())
@@ -168,13 +139,6 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         return $shipmentTransfer->setShippingAddress($addressTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer1
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer2
-     *
-     * @return void
-     */
     public function expandOrderItemsWithShipments(
         OrderTransfer $orderTransfer,
         ShipmentTransfer $shipmentTransfer1,
@@ -189,30 +153,16 @@ class PickingListMultiShipmentPickingStrategyExampleBusinessTester extends Actor
         $this->expandItemTransferWithPersistedShipment($itemsIterator->current(), $shipmentTransfer2);
     }
 
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery
-     */
     protected function getSalesOrderItemQuery(): SpySalesOrderItemQuery
     {
         return SpySalesOrderItemQuery::create();
     }
 
-    /**
-     * @param int $idSalesOrder
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     protected function getOrderTransfer(int $idSalesOrder): OrderTransfer
     {
         return $this->getLocator()->sales()->facade()->findOrderByIdSalesOrder($idSalesOrder);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\ShipmentTransfer $shipmentTransfer
-     *
-     * @return void
-     */
     protected function expandItemTransferWithPersistedShipment(ItemTransfer $itemTransfer, ShipmentTransfer $shipmentTransfer): void
     {
         $this->updateSalesOrderItemWithIdSalesShipment(

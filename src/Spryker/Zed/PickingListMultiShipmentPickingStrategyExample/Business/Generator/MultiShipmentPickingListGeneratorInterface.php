@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\PickingListOrderItemGroupTransfer;
 
 interface MultiShipmentPickingListGeneratorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PickingListOrderItemGroupTransfer $pickingListOrderItemGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\PickingListCollectionTransfer
-     */
     public function generatePickingLists(PickingListOrderItemGroupTransfer $pickingListOrderItemGroupTransfer): PickingListCollectionTransfer;
 }
